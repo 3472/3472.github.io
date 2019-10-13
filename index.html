@@ -10,7 +10,33 @@
 
     <script>
         function submitted() {
-            alert("Thank you for your donation");
+            var firstname = document.getElementById("firstname") && document.getElementById("firstname").value;
+            var lastname = document.getElementById("lastname") && document.getElementById("lastname").value;
+            var height = document.getElementById("height") && document.getElementById("height").value;
+            var donation = document.getElementById("donation") && document.getElementById("donation").value;
+
+            console.log(firstname);
+            console.log(lastname);
+            console.log(height);
+            console.log(donation);
+
+            var msg = "Thank you for your donation ";
+            if(!donation) {
+                msg = "Think of the cats. Donate something "
+            }
+            if(!firstname) {
+                firstname = "Somchai";
+            }
+            if(!height) {
+                alert("Secrets...");
+            }
+            else if(height > 160) {
+                alert("Height not plausible");
+            }
+
+            msg = msg + firstname;
+          
+            alert(msg);
         }
     </script>
 
@@ -44,13 +70,15 @@
                     <form onsubmit="submitted()">
                         <div class="form-group">
                             First name:<br>
-                            <input type="text" class="form-control" name="firstname"><br>
+                            <input type="text" class="form-control" name="firstname" id="firstname"><br>
                             Last name:<br>
-                            <input type="text" class="form-control" name="lastname"><br>
+                            <input type="text" class="form-control" name="lastname" id="lastname"><br>
                             Height [in cm]:<br>
-                            <input type="number" class="form-control" name="height"><br>
+                            <input type="number" class="form-control" name="height" id="height"><br>
                             Donation amount [in USD]:<br>
-                            <input type="number" class="form-control" min="1" max="100" step="1" name="amount"><br>
+                            <input type="number" class="form-control" min="1" max="100" step="1" 
+                            name="donation" id="donation"
+                            ><br>
                         </div>
                         <input type="submit" class="btn-success" value="DONATE NOW">
                     </form>
